@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -11,15 +6,44 @@ output:
 The first step is to load the required plyr, and ggplot2 libraries. Then download, unzip and load activity data into activity variable.
 
 
-```{r loading}
+
+```r
 # Install plyr library
 
 install.packages("plyr", repos="http://cran.rstudio.com/")
+```
+
+```
+## Installing package into '/Users/lucia/Library/R/3.2/library'
+## (as 'lib' is unspecified)
+```
+
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpOaK1Px/downloaded_packages
+```
+
+```r
 library(plyr)
 
 # install ggplot2
 
 install.packages("ggplot2", repos="http://cran.rstudio.com/")
+```
+
+```
+## Installing package into '/Users/lucia/Library/R/3.2/library'
+## (as 'lib' is unspecified)
+```
+
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpOaK1Px/downloaded_packages
+```
+
+```r
 library(ggplot2)
 
 # Download the activity.zip data sets to disk  +++++++++
@@ -34,13 +58,13 @@ unzip("activity.zip")
 # Load the activity data sets into activity dataframe +++++++++++++++++++++++++++
 
 activity <- read.csv("activity.csv")
-
 ```
 
 ## What is mean total number of steps taken per day?
 
 
-```{r}
+
+```r
 # Calculate the total number of steps taken per day
  
 totalNumberOfStepsPerDay=ddply(subset(activity,is.na(activity$steps)==FALSE), .(date), summarize, steps = sum(steps))
@@ -52,22 +76,35 @@ qplot( steps
        ,geom="histogram"
        ,binwidth = 5000
      )+labs(x="Histogram Total Number of Steps Taken Each Day")
+```
 
+![](PA1_template_files/figure-html/unnamed-chunk-1-1.png) 
+
+```r
 # Calculate the mean of the total number of steps taken per day
 
 mean(totalNumberOfStepsPerDay$steps)
+```
 
+```
+## [1] 10766.19
+```
+
+```r
 # Calculate the median of the total number of steps taken per day
 
 median(totalNumberOfStepsPerDay$steps)
+```
 
+```
+## [1] 10765
 ```
 
 
 ## What is the average daily activity pattern?
 
-```{r}
 
+```r
 # Plot with the average number of steps taken, averaged across all days (y-axis)
 
 averageNumberOfStepsTakenPerInterval=ddply(subset(activity,is.na(activity$steps)==FALSE), .(interval), summarize, steps = mean(steps))
@@ -77,12 +114,18 @@ qplot(  interval
         ,data=averageNumberOfStepsTakenPerInterval
         ,geom="line"
         )+labs(y="Average number of steps taken", x="5-minute day interval")
-        
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+
+```r
 # 5-minute interval averaged across all the days in the dataset that contains the maximum number of steps
 
 averageNumberOfStepsTakenPerInterval[averageNumberOfStepsTakenPerInterval$steps==max(averageNumberOfStepsTakenPerInterval$steps),]$interval
+```
 
-
+```
+## [1] 835
 ```
 
 
@@ -91,11 +134,18 @@ averageNumberOfStepsTakenPerInterval[averageNumberOfStepsTakenPerInterval$steps=
 Missing values (NA) will be replaced with the mean from the corresponding 5-minute interval.
 
 
-```{r}
+
+```r
 #Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
 
 sum(is.na(activity$steps))
+```
 
+```
+## [1] 2304
+```
+
+```r
 #Create a new dataset (activityModified) that is equal to the original dataset but with the missing data filled in.
 #Replace NA in original dataset with mean from corresponding 5-minute interval
 
@@ -125,21 +175,36 @@ qplot( steps
        ,geom="histogram"
        ,binwidth = 5000
 )+labs(x="Histogram Total Number of Steps Taken Each Day")
+```
 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+
+```r
 # Calculate the mean of the total number of steps taken per day
 
 mean(totalNumberOfStepsPerDayModified$steps)
+```
 
+```
+## [1] 10766.19
+```
+
+```r
 # Calculate the median of the total number of steps taken per day
 
 median(totalNumberOfStepsPerDayModified$steps)
+```
+
+```
+## [1] 10766.19
 ```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
 
-```{r}
+
+```r
 #Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating 
 #whether a given date is a weekday or weekend day.
 
@@ -173,6 +238,6 @@ plot(averageNumberOfStepsTakenPerIntervalWeekday$interval
         ,type="l"
         ,ylab="Steps taken per Interval"
         ,xlab="Weekday Interval")
-
-
 ```
+
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
