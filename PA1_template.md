@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -21,7 +26,7 @@ install.packages("plyr", repos="http://cran.rstudio.com/")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpOaK1Px/downloaded_packages
+## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpgXsCGI/downloaded_packages
 ```
 
 ```r
@@ -40,7 +45,7 @@ install.packages("ggplot2", repos="http://cran.rstudio.com/")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpOaK1Px/downloaded_packages
+## 	/var/folders/46/jlcscj957rj90tr08jbyh1_w0000gp/T//RtmpgXsCGI/downloaded_packages
 ```
 
 ```r
@@ -78,7 +83,7 @@ qplot( steps
      )+labs(x="Histogram Total Number of Steps Taken Each Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
 
 ```r
 # Calculate the mean of the total number of steps taken per day
@@ -116,7 +121,7 @@ qplot(  interval
         )+labs(y="Average number of steps taken", x="5-minute day interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
 ```r
 # 5-minute interval averaged across all the days in the dataset that contains the maximum number of steps
@@ -177,7 +182,7 @@ qplot( steps
 )+labs(x="Histogram Total Number of Steps Taken Each Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 ```r
 # Calculate the mean of the total number of steps taken per day
@@ -240,4 +245,4 @@ plot(averageNumberOfStepsTakenPerIntervalWeekday$interval
         ,xlab="Weekday Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 

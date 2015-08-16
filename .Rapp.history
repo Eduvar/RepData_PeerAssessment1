@@ -1,0 +1,47 @@
+language=en
+LANGUAGE=en
+getwd
+for(i in 1:10) { print (i)}
+x<-c("a","b","c","d")
+for(i in 1:4) { print (x[i])}
+for(i in seq_along(x)) { print (x[i])}
+for(letter in x) { print (letter)}
+x<-c("a","b","c","d",6)
+for(letter in x) { print (letter)}
+x<-c(6,"a","b","c","d",6)
+for(letter in x) { print (letter)}
+count<-0
+while(count<10){print(count) count<-count+1}
+while(count<10) {print(count) count<-count+1}
+library(httr)
+install.packages("httr")
+library(httr)
+oauth_endpoints("github")
+myapp <- oauth_app("github",#
+  key = "63c6f3e0ec385642fb6b",#
+  secret = "ac18e38860861ddb91924f8fe6b96c5a1d0b8cdc")
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+install.packages("httpuv")
+library(httpuv)
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+gtoken <- config(token = github_token)
+req <- GET("https://api.github.com/rate_limit", gtoken)
+stop_for_status(req)
+content(req)
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
+stop_for_status(req)
+content(req)
+cls
+clearscreen
+install.packages("httpr")
+install.packages("httpR")
+install.packages("httpr")
+library(httpr)
+install.packages(httpr)
+setwd("Documents")#
+setwd("Coursera")#
+setwd("RepData_PeerAssessment1")
+getwd()
+install.packages("knitr")
+library(knitr)
+knit2html("PA1_template.Rmd","PA1_template.html")
